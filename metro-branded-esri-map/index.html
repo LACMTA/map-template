@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metro Branded Esri Map</title>
 
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <!-- Load Leaflet from CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-    <!-- Load Esri Leaflet from CDN -->
-    <script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
+    <!-- Esri Leaflet and Esri Leaflet Vector -->
+    <script src="https://unpkg.com/esri-leaflet/dist/esri-leaflet.js"></script>
+    <script src="https://unpkg.com/esri-leaflet-vector@4/dist/esri-leaflet-vector.js"></script>
 
-    <!-- Load Esri Leaflet Vector from CDN -->
-    <script src="https://unpkg.com/esri-leaflet-vector@4.2.3/dist/esri-leaflet-vector.js" crossorigin=""></script>
 
     <style>
         html, body, #map {
@@ -31,11 +30,14 @@
     <script>
         // 1 year expiration limit
         // Expires on 11/1/2026
-        const ESRI_KEY =  "AAPTxy8BH1VEsoebNVZXo8HurCIBEXS58hLwaInNH7mnZeFDQtLv6ne8Ndu9F_uhRYlc8S3QwzihRLBHfqfKoYC0uHjQT_kpz30dyQZjxPiA0V_TN5OVXYN_oxt1cIjrW2oI_SeNlN1Ng3WoiCQp7hxGUOsiR2ie4SeWjbp49uozSflaCJVhPBpY38QC0Z23HoKLQhxJsM_gpSMYqf5uezD6TyP0JdemBlK3FHJOG95uSWU.AT1_iGEOXQH7";
+        const ESRI_KEY =  "AAPTxy8BH1VEsoebNVZXo8HurCIBEXS58hLwaInNH7mnZeFDQtLv6ne8Ndu9F_uhRYlc8RxqeU8UDdqtylajtTNbTo5zjQs945xeEEZtpBubS5Wh-pBin3OsPq7mKk8XZR-ORcBJEYmksiybUa8RtWgHXihoYo-iigBa9H8nAlgTKr-wVek78-XksiVdnwhUXS8gnB_ZXmHLzgI2mBGC18_etuTPMf0Zzkyzwv0XX7tSGGQ.AT1_iGEOXQH7";
 
-        //const basemapEnum = "65aff2873118478482ec3dec199e9058";
-        const basemapEnum = "bfc3028afac341499c40b8d2364db6c9";
-        const basemapStyle = `https://basemapstyles-api.arcgis.com/arcgis/rest/services/styles/v2/styles/items/${basemapEnum}?token=${ESRI_KEY}`;
+        const basemapEnum = "65aff2873118478482ec3dec199e9058";
+        //const basemapEnum = "bfc3028afac341499c40b8d2364db6c9";
+        //const basemapStyle = `https://basemapstyles-api.arcgis.com/arcgis/rest/services/styles/v2/styles/items/${basemapEnum}?token=${ESRI_KEY}`;
+        
+        // Existing Metro Rail and Busway
+        // https://lametro.maps.arcgis.com/home/item.html?id=17fc6859e51e4188b4a4120fcbd2e43d
         const mapImagery = 'https://tiles.arcgis.com/tiles/TNoJFjk1LsD45Juj/arcgis/rest/services/Map_RGB_Vector_Offset_RC5/MapServer';
 
         const map = L.map('map', {
