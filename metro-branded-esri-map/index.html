@@ -13,7 +13,6 @@
     <script src="https://unpkg.com/esri-leaflet/dist/esri-leaflet.js"></script>
     <script src="https://unpkg.com/esri-leaflet-vector@4/dist/esri-leaflet-vector.js"></script>
 
-
     <style>
         html, body, #map {
             height: 100%;
@@ -22,21 +21,18 @@
             padding: 0;
         }
     </style>
-
 </head>
 <body>
     <div id="map"></div>
 
     <script>
-        // 1 year expiration limit
-        // Expires on 11/1/2026
-        const ESRI_KEY =  "AAPTxy8BH1VEsoebNVZXo8HurCIBEXS58hLwaInNH7mnZeFDQtLv6ne8Ndu9F_uhRYlc8RxqeU8UDdqtylajtTNbTo5zjQs945xeEEZtpBubS5Wh-pBin3OsPq7mKk8XZR-ORcBJEYmksiybUa8RtWgHXihoYo-iigBa9H8nAlgTKr-wVek78-XksiVdnwhUXS8gnB_ZXmHLzgI2mBGC18_etuTPMf0Zzkyzwv0XX7tSGGQ.AT1_iGEOXQH7";
+        // This key expires on 11/1/2026 (1 year expiration limit) and is limited to use on this template page
+        const ESRI_KEY =  "AAPTxy8BH1VEsoebNVZXo8HurCIBEXS58hLwaInNH7mnZeFDQtLv6ne8Ndu9F_uhRYlc18AgMwTEsuec8eMgs0GRwRiVhQL5nB9AxTV0GrjUJViCAQrjBQfjCcyEEfAGFYT64_xKxnyxn8rQoO2pQrmlTTK-2MGRu-_o0qLRqTw5nVGE2jgkcELDwx3hkMcya5WNk6Su0OshN74WP_JRN6iUWlw9jMDga_ZWZG5KEgIa9Tip3LQGoMWxNkGotsFPfZKHAT1_iGEOXQH7";
 
+        // Metro Branded Basemap:
         const basemapEnum = "65aff2873118478482ec3dec199e9058";
-        //const basemapEnum = "bfc3028afac341499c40b8d2364db6c9";
-        //const basemapStyle = `https://basemapstyles-api.arcgis.com/arcgis/rest/services/styles/v2/styles/items/${basemapEnum}?token=${ESRI_KEY}`;
         
-        // Existing Metro Rail and Busway
+        // Existing Metro Rail and Busway:
         // https://lametro.maps.arcgis.com/home/item.html?id=17fc6859e51e4188b4a4120fcbd2e43d
         const mapImagery = 'https://tiles.arcgis.com/tiles/TNoJFjk1LsD45Juj/arcgis/rest/services/Map_RGB_Vector_Offset_RC5/MapServer';
 
@@ -44,10 +40,12 @@
             minZoom: 2
         }).setView([34.00095151499077, -118.25133692966446], 11);
 
+        // Add the Metro Branded Basemap
         L.esri.Vector.vectorBasemapLayer(basemapEnum, {
             apiKey: ESRI_KEY
         }).addTo(map);
 
+        // Add the Metro Rail and Busway Layer
         let metroLayer = new L.esri.TiledMapLayer({
             url: mapImagery,
             apiKey: ESRI_KEY
